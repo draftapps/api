@@ -10,7 +10,6 @@ services:
       - "3000:3000"
     links:
       - postgres
-      - nginx
     tty: true
     env_file:
       - api.env
@@ -39,5 +38,9 @@ services:
   postgres:
     image: postgres:9.4
     restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     ports:
       - "5432"
+volumes: 
+  pgdata:
